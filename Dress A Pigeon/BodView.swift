@@ -17,8 +17,8 @@ struct BodView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                Image("background")
-                    .resizable(resizingMode: .stretch)
+                Image("Background2")
+                    .resizable()
                     .aspectRatio(contentMode: .fill)
                     .ignoresSafeArea()
                 VStack{
