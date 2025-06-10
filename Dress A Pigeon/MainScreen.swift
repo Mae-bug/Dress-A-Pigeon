@@ -10,20 +10,24 @@ import SwiftUI
 struct MainScreen: View {
     var body: some View {
     ZStack {
-        Image("Background2")
-            .aspectRatio(contentMode: .fit)
+        Image("background")
         
-  
-
-        NavigationStack{
-            NavigationLink(destination: HatView()) {
-                Text("Start")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.purple)
-                
+        VStack {
+            Text("Welcome!")
+                .font(.title)
+                .fontWeight(.semibold)
+                .padding()
+            
+            NavigationStack{
+                NavigationLink(destination: HatView()) {
+                    
+                    Text("Start")
+                        .padding()
+                        .background(Color.white)
+                    
                 }//end of navigation link
             }//end of Navigation Stack
+        }//end of VStack
          }//end of ZStack
      }//end of Body
 }//end of struct
