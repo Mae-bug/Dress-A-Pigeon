@@ -9,20 +9,25 @@ import SwiftUI
 
 struct MainScreen: View {
     var body: some View {
-    ZStack {
-        Image("Background2")
-            .resizable()
-            .scaledToFit()
-            .ignoresSafeArea()
         
         VStack {
            
             
             NavigationStack{
+                
+                ZStack {
+                    Image("MainScreenBackground")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea()
+                    
                 NavigationLink(destination: HatView()) {
                     
                     Text("Start")
-                       
+                        .font(.title)
+                        .padding()
+                    .background(Color.white.opacity(0.7))
+                    .cornerRadius(10)
                     
                 }//end of navigation link
             }//end of Navigation Stack
