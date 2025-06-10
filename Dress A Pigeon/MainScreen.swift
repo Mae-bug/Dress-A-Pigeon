@@ -6,48 +6,41 @@
 //
 
 import SwiftUI
-
 struct MainScreen: View {
     var body: some View {
-        
-        VStack {
+        ZStack { // Layer views on top of each other
+            
            
-            NavigationStack{
-                
-                Image ("MainScreenBackground")
+            VStack {
+                NavigationStack {
+                    VStack(spacing: 40) {
+                        Image("MainScreenBackground")
                             .resizable()
                             .scaledToFill()
                             .ignoresSafeArea()
-        
-           
-                VStack(spacing: 40) {
-                    
-                 
-                    
-                Text("Welcome!")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.purple)
-                    .shadow(radius: 10)
-                    
-                NavigationLink(destination: HatView()) {
-                    
-                  
-                    Text("Start         ")
-                        .font(.title)
-                        .foregroundColor(Color.purple)
-                        .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                  
-                    
-                }//end of navigation link
-            }//end of Navigation Stack
-        }//end of VStack
-         }//end of ZStack
-     }//end of Body
-}//end of struct
+                        
+                        Text("Welcome!")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.purple)
+                            .shadow(radius: 10)
+                            .padding()
 
- #Preview {
+                        NavigationLink(destination: HatView()) {
+                            Text("Start")
+                                .font(.title)
+                                .foregroundColor(Color.purple)
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(10)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#Preview {
     MainScreen()
 }
