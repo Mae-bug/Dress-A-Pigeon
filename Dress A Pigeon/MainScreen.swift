@@ -12,22 +12,34 @@ struct MainScreen: View {
         
         VStack {
            
-            
             NavigationStack{
                 
-                ZStack {
-                    Image("MainScreenBackground")
-                        .resizable()
-                        .scaledToFill()
-                        .ignoresSafeArea()
+                Image ("MainScreenBackground")
+                            .resizable()
+                            .scaledToFill()
+                            .ignoresSafeArea()
+        
+           
+                VStack(spacing: 40) {
+                    
+                 
+                    
+                Text("Welcome!")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.purple)
+                    .shadow(radius: 10)
                     
                 NavigationLink(destination: HatView()) {
                     
-                    Text("Start")
+                  
+                    Text("Start         ")
                         .font(.title)
+                        .foregroundColor(Color.purple)
                         .padding()
-                    .background(Color.white.opacity(0.7))
+                    .background(Color.white)
                     .cornerRadius(10)
+                  
                     
                 }//end of navigation link
             }//end of Navigation Stack
