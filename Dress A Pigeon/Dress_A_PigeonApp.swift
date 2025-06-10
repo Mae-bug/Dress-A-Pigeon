@@ -11,7 +11,7 @@ import SwiftUI
 struct Dress_A_PigeonApp: App {
     var body: some Scene {
         WindowGroup {
-            HatView()
+            MainScreen()
         }
     }
 }
