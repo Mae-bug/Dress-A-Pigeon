@@ -2,6 +2,7 @@ import SwiftUI
 import AVFoundation
 
 struct MainScreen: View {
+
   @EnvironmentObject var characterSelection: CharacterSelection
   @State private var isAnimating = false
   @State private var audioPlayer: AVAudioPlayer?
@@ -21,6 +22,7 @@ struct MainScreen: View {
           .onAppear {
             withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
               isAnimating = true
+
             }
             prepareSound(soundName: "ui-button-click-8-341030", type: "mp3")
           }
@@ -53,11 +55,13 @@ struct MainScreen: View {
     } else {
       print("Sound file not found.")
     }
+
   }
 
   func playSound() {
     audioPlayer?.play()
   }
+
 }
 
 struct MainScreenPreviewWrapper: View {

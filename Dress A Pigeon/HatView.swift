@@ -2,10 +2,12 @@ import SwiftUI
 import AVFoundation
 
 struct HatView: View {
+
   @EnvironmentObject var characterSelection: CharacterSelection
   @State private var isAnimating = false
   @State private var audioPlayer1: AVAudioPlayer?
   @State private var audioPlayer2: AVAudioPlayer?
+
 
   let frameSize = 185.0
 
@@ -28,13 +30,13 @@ struct HatView: View {
         hatSelectionRow(indices: [0, 1])
         hatSelectionRow(indices: [2, 3])
 
+
         NavigationLink(destination: BodView().environmentObject(characterSelection)) {
           ZStack {
             RoundedRectangle(cornerRadius: 30)
               .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
               .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
               .frame(width: 130, height: 50)
-         
 
             Text("Continue")
               .font(.headline)
@@ -82,6 +84,7 @@ struct HatView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: frameSize)
+
         }
         .onTapGesture {
           if characterSelection.activeIndex == index {
@@ -96,6 +99,7 @@ struct HatView: View {
         }
       }
     }
+
     .padding()
     .navigationBarBackButtonHidden(true)
   }
@@ -122,6 +126,7 @@ struct HatView: View {
       }
     } else {
       print("Sound file not found.")
+
     }
   }
    

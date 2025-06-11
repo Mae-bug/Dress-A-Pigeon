@@ -2,6 +2,7 @@ import SwiftUI
 import AVFoundation
 
 struct BodView: View {
+
   @EnvironmentObject var characterSelection: CharacterSelection
   @State private var isAnimating = false
   @State private var audioPlayer1: AVAudioPlayer?
@@ -46,6 +47,7 @@ struct BodView: View {
             prepareSound2(soundName: "ui-button-click-8-341030", type: "mp3")
             withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
               isAnimating = true
+
             }
           }
         }
@@ -98,6 +100,7 @@ struct BodView: View {
           playSound()
           print("Bod selected: \(characterSelection.bod), Active Index: \(String(describing: characterSelection.activeIndex))")
         }
+
       }
     }
     .padding()
@@ -154,6 +157,7 @@ struct BodView: View {
   struct BodView_Previews: PreviewProvider {
     static var previews: some View {
       BodViewPreviewWrapper()
+
     }
   }
 }
