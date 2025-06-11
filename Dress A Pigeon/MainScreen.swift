@@ -8,11 +8,13 @@ struct MainScreen: View {
 
     var body: some View {
         ZStack {
+            
             Image("background")
                 .resizable()
                 .ignoresSafeArea()
-
+            
             VStack {
+
                 Image("logo")
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
@@ -21,6 +23,7 @@ struct MainScreen: View {
                     .onAppear {
                         withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
                             isAnimating = true
+               
                         }
                         prepareSound(soundName: "ui-button-click-8-341030", type: "mp3")
                     }
@@ -28,6 +31,7 @@ struct MainScreen: View {
                 NavigationStack {
                     NavigationLink(destination: HatView().environmentObject(characterSelection)) {
                         Text("Start")
+                            .font(.title3)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(10)

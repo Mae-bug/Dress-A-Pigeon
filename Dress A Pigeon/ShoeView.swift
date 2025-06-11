@@ -7,6 +7,7 @@ struct ShoeView: View {
     @State private var audioPlayer1: AVAudioPlayer?
     @State private var audioPlayer2: AVAudioPlayer?
 
+
     let frameSize = 185.0
 
     var body: some View {
@@ -58,6 +59,47 @@ struct ShoeView: View {
                     isAnimating = true
                 }
             }
+
+  let frameSize = 185.0
+
+  var body: some View {
+    ZStack {
+      Image("background")
+        .resizable()
+        .aspectRatio(contentMode: .fill)
+        .ignoresSafeArea()
+
+      VStack {
+        Text("Choose a Shoe")
+              .font(.title)
+              .fontWeight(.heavy)
+              .foregroundColor(Color(hue:0.594, saturation: 0.955, brightness: 0.445))
+              .padding(5)
+              .background(Color(hue: 0.752, saturation: 0.135, brightness: 0.967))
+              .cornerRadius(5)
+       
+
+        shoeSelectionRow(indices: [0, 1])
+        shoeSelectionRow(indices: [2])
+
+        NavigationLink(destination: ResultsView().environmentObject(characterSelection)) {
+          ZStack {
+            RoundedRectangle(cornerRadius: 30)
+              .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
+              .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
+              .frame(width: 130, height: 50)
+
+            Text("Continue")
+              .font(.headline)
+              .fontWeight(.semibold)
+              .foregroundColor(.white)
+          }
+          .scaleEffect(isAnimating ? 1.1 : 1.0)
+          .onAppear {
+              withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                  isAnimating = true
+              }
+          }
         }
     }
 
