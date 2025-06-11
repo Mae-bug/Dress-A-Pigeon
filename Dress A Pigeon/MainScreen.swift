@@ -18,6 +18,7 @@ struct MainScreen: View {
                 NavigationStack {
                     NavigationLink(destination: HatView().environmentObject(characterSelection)) { // Pass it here
                         Text("Start")
+                            .font(.title3)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(10)

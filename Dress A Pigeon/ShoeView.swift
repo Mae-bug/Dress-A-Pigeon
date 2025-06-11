@@ -14,12 +14,13 @@ struct ShoeView: View {
 
       VStack {
         Text("Choose a Shoe")
-          .font(.title)
-          .fontWeight(.heavy)
-          .foregroundColor(Color(hue: 0.594, saturation: 0.955, brightness: 0.445))
-          .padding(5)
-          .background(Color.white)
-          .cornerRadius(5)
+              .font(.title)
+              .fontWeight(.heavy)
+              .foregroundColor(Color(hue:0.594, saturation: 0.955, brightness: 0.445))
+              .padding(5)
+              .background(Color(hue: 0.752, saturation: 0.135, brightness: 0.967))
+              .cornerRadius(5)
+       
 
         shoeSelectionRow(indices: [0, 1])
         shoeSelectionRow(indices: [2])

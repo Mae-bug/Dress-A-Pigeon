@@ -16,11 +16,13 @@ struct ResultsView: View {
                 .aspectRatio(contentMode: .fit)
             
             NavigationLink(destination: MainScreen().environmentObject(characterSelection)) {
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 30)
                         .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
                         .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
                         .frame(width: 130, height: 50)
+                   
                     
                     Text("Play Again")
                         .font(.headline)
@@ -44,4 +46,7 @@ struct ResultsView: View {
             
         }
     }
+}
+
+#Preview {
 }

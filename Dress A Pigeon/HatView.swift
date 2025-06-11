@@ -16,10 +16,12 @@ struct HatView: View {
                 Text("Choose a Hat")
                     .font(.title)
                     .fontWeight(.heavy)
-                    .foregroundColor(Color(hue: 0.594, saturation: 0.955, brightness: 0.445))
+                    .foregroundColor(Color(hue:0.594, saturation: 0.955, brightness: 0.445))
                     .padding(5)
-                    .background(Color.white)
+                    .background(Color(hue: 0.752, saturation: 0.135, brightness: 0.967))
                     .cornerRadius(5)
+             
+
 
                 hatSelectionRow(indices: [0, 1])
                 hatSelectionRow(indices: [2, 3])
