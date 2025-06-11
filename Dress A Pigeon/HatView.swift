@@ -1,162 +1,105 @@
-//
-//  ContentView.swift
-//  Dress A Pigeon
-//
-//  Created by Scholar on 6/9/25.
-//
-
-
 import SwiftUI
 
 struct HatView: View {
+    @EnvironmentObject var characterSelection: CharacterSelection
 
-    
-    var frameSize = 185.0
-    @State private var hat = 0
-    @State private var bod = 0
-    @State private var foot = 0
-    @State private var activeIndex: Int? = nil
+    let frameSize = 185.0
 
     var body: some View {
-        NavigationStack{
-            ZStack{
-                Image("background")
-                    .resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fill)
-                    .ignoresSafeArea()
-                VStack{
-                    Text("Choose a Hat")
-    
-                        .font(.title)
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color(hue: 0.594, saturation: 0.955, brightness: 0.445))
-                        .background(Color.white)
-                    HStack(spacing: 20) {
-                        ForEach(0..<1) { index in
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
-                                    .fill(activeIndex == index ? Color(hue: 0.758, saturation: 0.164, brightness: 1.0) : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
-                                    .frame(width: frameSize, height: frameSize)
-                                
-                                Image("bluegreycat")
-                                    .resizable(resizingMode: .stretch)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: frameSize)
-                                    .onTapGesture {
-                                        hat = 100
-                                        print(hat)
-                                        if activeIndex == index {
-                                            // Tapping again deactivates it
-                                            activeIndex = nil
-                                        } else {
-                                            activeIndex = index
-                                        }
-                                    }
-                            }
-                            
-                            
-                        }
-                        ForEach(1..<2) { index in
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
-                                    .fill(activeIndex == index ? Color(hue: 0.758, saturation: 0.164, brightness: 1.0) : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
-                                    .frame(width: frameSize, height: frameSize)
-                                
-                                Image("bluegreycat")
-                                    .resizable(resizingMode: .stretch)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: frameSize)
-                                    .onTapGesture {
-                                        hat = 200
-                                        print(hat)
-                                        if activeIndex == index {
-                                            // Tapping again deactivates it
-                                            activeIndex = nil
-                                        } else {
-                                            activeIndex = index
-                                        }
-                                    }
-                            }
-                            
-                            
-                        }
-                    }
-                    .padding()
-                    HStack(spacing: 20) {
-                        ForEach(2..<3) { index in
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
-                                    .fill(activeIndex == index ? Color(hue: 0.758, saturation: 0.164, brightness: 1.0) : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
-                                    .frame(width: frameSize, height: frameSize)
-                                
-                                Image("bluegreycat")
-                                    .resizable(resizingMode: .stretch)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: frameSize)
-                                    .onTapGesture {
-                                        hat = 300
-                                        print(hat)
-                                        if activeIndex == index {
-                                            // Tapping again deactivates it
-                                            activeIndex = nil
-                                        } else {
-                                            activeIndex = index
-                                        }
-                                    }
-                            }
-                        }
-                        ForEach(3..<4) { index in
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
-                                    .fill(activeIndex == index ? Color(hue: 0.758, saturation: 0.164, brightness: 1.0) : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
-                                    .frame(width: frameSize, height: frameSize)
-                                
-                                Image("bluegreycat")
-                                    .resizable(resizingMode: .stretch)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: frameSize)
-                                    .onTapGesture {
-                                        hat = 400
-                                        print(hat)
-                                        if activeIndex == index {
-                                            // Tapping again deactivates it
-                                            activeIndex = nil
-                                        } else {
-                                            activeIndex = index
-                                        }
-                                    }
-                            }
-                            
-                            
-                        }
-                    }
-                    NavigationLink(destination:BodView()) {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
-                                .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
-                                .frame(width: 130, height: 50)
-                            
-                            
-                            Text("Continue")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(Color.white)
-                            
-                        }
-                        .padding()
+        ZStack {
+            Image("background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
+
+            VStack {
+                Text("Choose a Hat")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color(hue: 0.594, saturation: 0.955, brightness: 0.445))
+                    .padding(5)
+                    .background(Color.white)
+                    .cornerRadius(5)
+
+                hatSelectionRow(indices: [0, 1])
+                hatSelectionRow(indices: [2, 3])
+
+                NavigationLink(destination: BodView().environmentObject(characterSelection)) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 30)
+                            .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
+                            .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
+                            .frame(width: 130, height: 50)
+
+                        Text("Continue")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
                     }
                 }
+                .disabled(characterSelection.hat == 0)
                 .padding()
+
             }
+            .padding()
+        }
+        .onAppear {
+            characterSelection.activeIndex = nil
         }
     }
+
+    @ViewBuilder
+    func hatSelectionRow(indices: [Int]) -> some View {
+        HStack(spacing: 20) {
+            ForEach(indices, id: \.self) { index in
+                let imageName = "\( (index + 1) * 100 )"  // "100", "200", "300", "400"
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
+                        .fill(characterSelection.activeIndex == index
+                              ? Color(hue: 0.758, saturation: 0.164, brightness: 1.0)
+                              : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
+                        .frame(width: frameSize, height: frameSize)
+
+                    Image(imageName) // Use different image for each index
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: frameSize)
+                }
+                .onTapGesture {
+                    if characterSelection.activeIndex == index {
+                        characterSelection.activeIndex = nil
+                        characterSelection.hat = 0
+                    } else {
+                        characterSelection.activeIndex = index
+                        characterSelection.hat = (index + 1) * 100
+                    }
+                    print("Hat selected: \(characterSelection.hat), Active Index: \(String(describing: characterSelection.activeIndex))")
+                }
+            }
+        }
+        .padding()
+        .navigationBarBackButtonHidden(true)
+    }
+
+    }
+
+struct HatViewPreviewWrapper: View {
+    @StateObject var characterSelection = CharacterSelection()
+
+    var body: some View {
+        NavigationStack {
+            HatView()
+                .environmentObject(characterSelection)
+        }
+        
+    }
+    
 }
 
-#Preview {
-    HatView()
+struct HatView_Previews: PreviewProvider {
+    static var previews: some View {
+        HatViewPreviewWrapper()
+    }
 }
