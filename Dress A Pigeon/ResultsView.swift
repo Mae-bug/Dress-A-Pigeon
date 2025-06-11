@@ -13,6 +13,7 @@ struct ResultsView: View {
             Image("Congratulations")
                 .resizable()
    
+            
             Image(finalPigeon)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
