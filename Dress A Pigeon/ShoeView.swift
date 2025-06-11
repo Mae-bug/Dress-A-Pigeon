@@ -1,13 +1,6 @@
-//
-//  ContentView.swift
-//  Dress A Pigeon
-//
-//  Created by Scholar on 6/9/25.
-//
-
 import SwiftUI
 
-struct HatView: View {
+struct ShoeView: View {
     @EnvironmentObject var characterSelection: CharacterSelection
 
     let frameSize = 185.0
@@ -20,7 +13,7 @@ struct HatView: View {
                 .ignoresSafeArea()
 
             VStack {
-                Text("Choose a Hat")
+                Text("Choose a Shoe")
                     .font(.title)
                     .fontWeight(.heavy)
                     .foregroundColor(Color(hue: 0.594, saturation: 0.955, brightness: 0.445))
@@ -28,10 +21,10 @@ struct HatView: View {
                     .background(Color.white)
                     .cornerRadius(5)
 
-                hatSelectionRow(indices: [0, 1])
-                hatSelectionRow(indices: [2, 3])
+                shoeSelectionRow(indices: [0, 1])
+                shoeSelectionRow(indices: [2])
 
-                NavigationLink(destination: BodView().environmentObject(characterSelection)) {
+                NavigationLink(destination: ResultsView().environmentObject(characterSelection)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 30)
                             .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
@@ -44,9 +37,8 @@ struct HatView: View {
                             .foregroundColor(.white)
                     }
                 }
-                .disabled(characterSelection.hat == 0)
+                .disabled(characterSelection.shoe == 0)
                 .padding()
-
             }
             .padding()
         }
@@ -56,11 +48,9 @@ struct HatView: View {
     }
 
     @ViewBuilder
-    func hatSelectionRow(indices: [Int]) -> some View {
+    func shoeSelectionRow(indices: [Int]) -> some View {
         HStack(spacing: 20) {
             ForEach(indices, id: \.self) { index in
-                let imageName = "\( (index + 1) * 100 )"  // "100", "200", "300", "400"
-                
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
@@ -69,7 +59,7 @@ struct HatView: View {
                               : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
                         .frame(width: frameSize, height: frameSize)
 
-                    Image(imageName) // Use different image for each index
+                    Image("bluegreycat")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: frameSize)
@@ -77,37 +67,32 @@ struct HatView: View {
                 .onTapGesture {
                     if characterSelection.activeIndex == index {
                         characterSelection.activeIndex = nil
-                        characterSelection.hat = 0
+                        characterSelection.shoe = 0
                     } else {
                         characterSelection.activeIndex = index
-                        characterSelection.hat = (index + 1) * 100
+                        characterSelection.shoe = (index + 1) * 1
                     }
-                    print("Hat selected: \(characterSelection.hat), Active Index: \(String(describing: characterSelection.activeIndex))")
+                    print("Shoe selected: \(characterSelection.shoe), Active Index: \(String(describing: characterSelection.activeIndex))")
                 }
             }
         }
         .padding()
     }
+}
 
-    }
-
-struct HatViewPreviewWrapper: View {
+struct ShoeViewPreviewWrapper: View {
     @StateObject var characterSelection = CharacterSelection()
 
     var body: some View {
         NavigationStack {
-            HatView()
+            ShoeView()
                 .environmentObject(characterSelection)
         }
     }
 }
 
-struct HatView_Previews: PreviewProvider {
+struct ShoeView_Previews: PreviewProvider {
     static var previews: some View {
-        HatViewPreviewWrapper()
+        ShoeViewPreviewWrapper()
     }
-}
-
-#Preview {
-    HatView()
 }
