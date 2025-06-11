@@ -7,11 +7,12 @@ struct ResultsView: View {
     @State private var isAnimating = false
     
     var body: some View {
+
         VStack {
-            Text("\(characterSelection.totalScore)")
-                .font(.system(size: 100, weight: .bold))
-                .foregroundColor(.blue)
             
+            Image("Congratulations")
+                .resizable()
+   
             Image(finalPigeon)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
@@ -44,7 +45,8 @@ struct ResultsView: View {
         .navigationBarBackButtonHidden(true)
     }
     
-    
+ 
+
     
     
     struct ResultsView_Previews: PreviewProvider {
@@ -52,6 +54,8 @@ struct ResultsView: View {
             NavigationStack {
                 ResultsView()
                     .environmentObject(CharacterSelection())
+            
+        
             }
             
         }

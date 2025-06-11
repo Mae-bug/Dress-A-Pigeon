@@ -7,12 +7,13 @@ struct MainScreen: View {
 
     var body: some View {
         ZStack {
+            
             Image("background")
                 .resizable()
                 .ignoresSafeArea()
-
+            
             VStack {
-                
+        
                 Image("logo")
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
@@ -21,6 +22,7 @@ struct MainScreen: View {
                     .onAppear {
                         withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
                             isAnimating = true
+               
                         }
                     }
 
