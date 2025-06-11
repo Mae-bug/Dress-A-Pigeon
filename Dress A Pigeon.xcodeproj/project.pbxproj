@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		BD1BB5632DF87B07002C209F /* Double_Bubble_shadow.otf in Resources */ = {isa = PBXBuildFile; fileRef = BD1BB5622DF87B07002C209F /* Double_Bubble_shadow.otf */; };
+		BD63EDE12DFA045C0036E369 /* button-click-289742.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD63EDE02DFA045C0036E369 /* button-click-289742.mp3 */; };
+		BD63EDE32DFA07550036E369 /* ui-button-click-8-341030.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD63EDE22DFA07550036E369 /* ui-button-click-8-341030.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BD1BB5482DF77B20002C209F /* Dress A Pigeon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dress A Pigeon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1BB5622DF87B07002C209F /* Double_Bubble_shadow.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Double_Bubble_shadow.otf; sourceTree = "<group>"; };
+		BD63EDE02DFA045C0036E369 /* button-click-289742.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "button-click-289742.mp3"; sourceTree = "<group>"; };
+		BD63EDE22DFA07550036E369 /* ui-button-click-8-341030.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ui-button-click-8-341030.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -39,6 +43,8 @@
 			children = (
 				BD1BB54A2DF77B20002C209F /* Dress A Pigeon */,
 				BD1BB5622DF87B07002C209F /* Double_Bubble_shadow.otf */,
+				BD63EDE02DFA045C0036E369 /* button-click-289742.mp3 */,
+				BD63EDE22DFA07550036E369 /* ui-button-click-8-341030.mp3 */,
 				BD1BB5492DF77B20002C209F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,7 +121,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD63EDE32DFA07550036E369 /* ui-button-click-8-341030.mp3 in Resources */,
 				BD1BB5632DF87B07002C209F /* Double_Bubble_shadow.otf in Resources */,
+				BD63EDE12DFA045C0036E369 /* button-click-289742.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
