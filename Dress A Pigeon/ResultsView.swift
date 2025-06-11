@@ -4,6 +4,7 @@ struct ResultsView: View {
     @EnvironmentObject var characterSelection: CharacterSelection
     
     @State private var finalPigeon: String = ""
+    @State private var isAnimating = false
     
     var body: some View {
         VStack {
@@ -29,13 +30,22 @@ struct ResultsView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }
+                .scaleEffect(isAnimating ? 1.1 : 1.0)
+                .onAppear {
+                    withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                        isAnimating = true
+                    }
                 }
+            }
         }
         .onAppear {
             finalPigeon = String(characterSelection.totalScore)
         }
         .navigationBarBackButtonHidden(true)
     }
+    
+    
+    
     
     struct ResultsView_Previews: PreviewProvider {
         static var previews: some View {

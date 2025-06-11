@@ -2,6 +2,8 @@ import SwiftUI
 
 struct MainScreen: View {
     @EnvironmentObject var characterSelection: CharacterSelection // Add this line to access the environment object
+    @State private var isAnimating = false
+
 
     var body: some View {
         ZStack {
@@ -10,10 +12,17 @@ struct MainScreen: View {
                 .ignoresSafeArea()
 
             VStack {
-                Text("Welcome!")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .padding()
+                
+                Image("logo")
+                    .resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 350.0)
+                    .scaleEffect(isAnimating ? 1.1 : 1.0)
+                    .onAppear {
+                        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                            isAnimating = true
+                        }
+                    }
 
                 NavigationStack {
                     NavigationLink(destination: HatView().environmentObject(characterSelection)) { // Pass it here

@@ -1,6 +1,8 @@
 import Foundation
 import SwiftUI
 
+
+
 class CharacterSelection: ObservableObject {
     @Published var hat: Int = 0
     @Published var bod: Int = 0
@@ -12,3 +14,4 @@ class CharacterSelection: ObservableObject {
         hat + bod + shoe
     }
 }
+
