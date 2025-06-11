@@ -2,12 +2,10 @@ import SwiftUI
 import AVFoundation
 
 struct ShoeView: View {
-
   @EnvironmentObject var characterSelection: CharacterSelection
   @State private var isAnimating = false
   @State private var audioPlayer1: AVAudioPlayer?
   @State private var audioPlayer2: AVAudioPlayer?
-
 
   let frameSize = 185.0
 
@@ -44,7 +42,6 @@ struct ShoeView: View {
           }
           .scaleEffect(isAnimating ? 1.1 : 1.0)
         }
-
         .simultaneousGesture(TapGesture().onEnded {
           playSound2()
         })
@@ -61,9 +58,8 @@ struct ShoeView: View {
           isAnimating = true
         }
       }
-
     }
-
+  }
 
   @ViewBuilder
   func shoeSelectionRow(indices: [Int]) -> some View {
@@ -71,34 +67,19 @@ struct ShoeView: View {
       ForEach(indices, id: \.self) { index in
         let imageName = "\( (index + 1) * 1)" // "100", "200", "300", "400"
 
+        ZStack {
+          RoundedRectangle(cornerRadius: 20)
+            .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
+            .fill(characterSelection.activeIndex == index
+               ? Color(hue: 0.758, saturation: 0.164, brightness: 1.0)
+               : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
+            .frame(width: frameSize, height: frameSize)
 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
-                        .fill(characterSelection.activeIndex == index
-                              ? Color(hue: 0.758, saturation: 0.164, brightness: 1.0)
-                              : Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
-                        .frame(width: frameSize, height: frameSize)
-
-                    Image(imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: frameSize)
-                }
-                .onTapGesture {
-                    if characterSelection.activeIndex == index {
-                        characterSelection.activeIndex = nil
-                        characterSelection.shoe = 0
-                    } else {
-                        characterSelection.activeIndex = index
-                        characterSelection.shoe = (index + 1) * 1
-                    }
-                    playSound()
-                    print("Shoe selected: \(characterSelection.shoe), Active Index: \(String(describing: characterSelection.activeIndex))")
-                }
-            }
+          Image(imageName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: frameSize)
         }
-
         .onTapGesture {
           if characterSelection.activeIndex == index {
             characterSelection.activeIndex = nil
@@ -109,10 +90,9 @@ struct ShoeView: View {
           }
           playSound()
           print("Shoe selected: \(characterSelection.shoe), Active Index: \(String(describing: characterSelection.activeIndex))")
-
         }
+      }
     }
-
     .padding()
     .navigationBarBackButtonHidden(true)
   }
@@ -150,25 +130,21 @@ struct ShoeView: View {
   func playSound2() {
     audioPlayer2?.play()
   }
-
 }
 
 struct ShoeViewPreviewWrapper: View {
-    @StateObject var characterSelection = CharacterSelection()
+  @StateObject var characterSelection = CharacterSelection()
 
-    var body: some View {
-        NavigationStack {
-            ShoeView()
-                .environmentObject(characterSelection)
-        }
+  var body: some View {
+    NavigationStack {
+      ShoeView()
+        .environmentObject(characterSelection)
     }
-
   }
-
 }
 
 struct ShoeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShoeViewPreviewWrapper()
-    }
+  static var previews: some View {
+    ShoeViewPreviewWrapper()
+  }
 }
