@@ -1,8 +1,11 @@
 import SwiftUI
+import AVFoundation
 
 struct HatView: View {
     @EnvironmentObject var characterSelection: CharacterSelection
     @State private var isAnimating = false
+    @State private var audioPlayer1: AVAudioPlayer?
+    @State private var audioPlayer2: AVAudioPlayer?
 
     let frameSize = 185.0
 
@@ -40,11 +43,16 @@ struct HatView: View {
                     }
                     .scaleEffect(isAnimating ? 1.1 : 1.0)
                     .onAppear {
+                        prepareSound(soundName: "button-click-289742", type: "mp3")
+                        prepareSound2(soundName: "ui-button-click-8-341030", type: "mp3")
                         withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
                             isAnimating = true
                         }
                     }
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    playSound2()
+                })
                 .disabled(characterSelection.hat == 0)
                 .padding()
 
@@ -83,6 +91,7 @@ struct HatView: View {
                         characterSelection.activeIndex = index
                         characterSelection.hat = (index + 1) * 100
                     }
+                    playSound()
                     print("Hat selected: \(characterSelection.hat), Active Index: \(String(describing: characterSelection.activeIndex))")
                 }
             }
@@ -90,7 +99,40 @@ struct HatView: View {
         .padding()
         .navigationBarBackButtonHidden(true)
     }
-
+    func prepareSound(soundName: String, type: String) {
+        if let path = Bundle.main.path(forResource: soundName, ofType: type) {
+            do {
+                audioPlayer1 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer1?.prepareToPlay()
+            } catch {
+                print("Error loading sound: \(error.localizedDescription)")
+            }
+        } else {
+            print("Sound file not found.")
+        }
+    }
+    
+    func prepareSound2(soundName: String, type: String) {
+        if let path = Bundle.main.path(forResource: soundName, ofType: type) {
+            do {
+                audioPlayer2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer2?.prepareToPlay()
+            } catch {
+                print("Error loading sound: \(error.localizedDescription)")
+            }
+        } else {
+            print("Sound file not found.")
+        }
+    }
+    
+    func playSound() {
+        audioPlayer1?.play()
+    }
+    
+    func playSound2() {
+        audioPlayer2?.play()
+    }
+    
     }
 
 struct HatViewPreviewWrapper: View {
