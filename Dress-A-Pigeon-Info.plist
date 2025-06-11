@@ -5,7 +5,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Double_Bubble_shadow.oft</string>
-		<string></string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -24,6 +23,10 @@
 					<string></string>
 					<key>UISceneStoryboardFile</key>
 					<string></string>
+					<key>UIAppFonts</key>
+					<array>
+						<string>Double_Bubble_shadow.otf</string>
+					</array>
 				</dict>
 			</array>
 		</dict>

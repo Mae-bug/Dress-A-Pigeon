@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ShoeView: View {
   @EnvironmentObject var characterSelection: CharacterSelection
+    @State private var isAnimating = false
 
   let frameSize = 185.0
 
@@ -35,6 +36,12 @@ struct ShoeView: View {
               .font(.headline)
               .fontWeight(.semibold)
               .foregroundColor(.white)
+          }
+          .scaleEffect(isAnimating ? 1.1 : 1.0)
+          .onAppear {
+              withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                  isAnimating = true
+              }
           }
         }
         .disabled(characterSelection.shoe == 0)

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct BodView: View {
     @EnvironmentObject var characterSelection: CharacterSelection
+    @State private var isAnimating = false
 
     let frameSize = 185.0
 
@@ -30,11 +31,19 @@ struct BodView: View {
                             .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
                             .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
                             .frame(width: 130, height: 50)
+                            
+                        
 
                         Text("Continue")
                             .font(.headline)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
+                    }
+                    .scaleEffect(isAnimating ? 1.1 : 1.0)
+                    .onAppear {
+                        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                            isAnimating = true
+                        }
                     }
                 }
                 .disabled(characterSelection.bod == 0)
