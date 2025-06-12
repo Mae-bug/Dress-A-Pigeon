@@ -42,10 +42,11 @@ struct HatView: View {
               .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
               .frame(width: 130, height: 50)
 
-            Text("Continue")
-              .font(.headline)
-              .fontWeight(.semibold)
-              .foregroundColor(.white)
+            Image("Next")
+                  .resizable(resizingMode: .stretch)
+                  .aspectRatio(contentMode: .fit)
+                  .frame(width: 100.0)
+              
           }
           .scaleEffect(isAnimating ? 1.1 : 1.0)
           .onAppear {
