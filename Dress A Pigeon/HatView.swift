@@ -19,13 +19,17 @@ struct HatView: View {
         .ignoresSafeArea()
 
       VStack {
-        Text("Choose a Hat")
-          .font(.title)
-          .fontWeight(.heavy)
-          .foregroundColor(Color(hue: 0.594, saturation: 0.955, brightness: 0.445))
-          .padding(5)
-          .background(Color.white)
-          .cornerRadius(5)
+          ZStack{
+              RoundedRectangle(cornerRadius: 30)
+                .stroke(Color(hue: 0.758, saturation: 0.164, brightness: 1.0), lineWidth: 14)
+                .fill(Color(hue: 0.758, saturation: 0.462, brightness: 0.992))
+                .frame(width: 300, height: 50)
+              Image("HatChoose")
+                  .resizable(resizingMode: .stretch)
+                  .aspectRatio(contentMode: .fit)
+                  .frame(width: 300.0)
+              
+          }
 
         hatSelectionRow(indices: [0, 1])
         hatSelectionRow(indices: [2, 3])
