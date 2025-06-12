@@ -142,7 +142,7 @@ struct HatView: View {
   func playSound2() {
     audioPlayer2?.play()
   }
-   
+ 
   }
 
 struct HatViewPreviewWrapper: View {

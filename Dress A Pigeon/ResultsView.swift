@@ -106,6 +106,10 @@ struct ResultsView: View {
         func playSound2() {
             audioPlayer2?.play()
         }
+        func stopAllSounds() {
+          audioPlayer1?.stop()
+          audioPlayer2?.stop()
+        }
         
     }
 
